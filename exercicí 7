@@ -1,1 +1,25 @@
+using System;
+using System.Security.Cryptography.X509Certificates;
+public class ExemploMembrosEstaticos
+{
+    public static int contador = 0;
+    public ExemploMembrosEstaticos()
+    {
+        contador++;
+    }
+    public static void MostrarContador()
+    {
+        Console.WriteLine("O contador está em:"+ contador);
+    }
+}
+public class Program 
+{
+    public static void Main()
+    {
+        new ExemploMembrosEstaticos();
+        new ExemploMembrosEstaticos();
+        ExemploMembrosEstaticos.MostrarContador(); // isso deve imprimir "O contador está em:2"
+
+    }
+}
 
