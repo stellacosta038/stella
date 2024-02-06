@@ -1,0 +1,31 @@
+using System;
+public class Pessoa
+{
+    public string Nome { get; set; }
+    public int Idade { get; set; }
+    public string Profissao { get; set; }
+
+    public Pessoa(string nome, int idade, string profissao)
+    {
+        Nome = nome;
+        Idade = idade;
+        Profissao = profissao;
+    }
+
+    public void Apresentar()
+    {
+        Console.WriteLine($"Olá, meu nome é {Nome}, tenho {Idade} anos e trabalho como {Profissao}.");
+    }
+
+    public void ComemorarAniversario()
+    {
+        Idade++;
+        Console.WriteLine("Parabéns! Estou completando mais um ano de vida.");
+    }
+
+    public void MudarProfissao(string novaProfissao)
+    {
+        Profissao = novaProfissao;
+        Console.WriteLine($"Decidi mudar minha profissão para {novaProfissao}.");
+    }
+}
