@@ -1,0 +1,20 @@
+using System;
+
+class Pessoa
+{
+    public string Nome { get; set; }
+    public int Idade { get; set; }
+
+    public override string ToString()
+    {
+        return $"Nome:{Nome}, Idade:{Idade}";
+    }
+}
+class Program
+{
+    static void Main()
+    {
+        Pessoa pessoa = new Pessoa { Nome = "Stella", Idade = 30 };
+        Console.WriteLine(pessoa.ToString());
+    }
+}
