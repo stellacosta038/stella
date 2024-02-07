@@ -1,0 +1,40 @@
+using System;
+
+public class Jokenpo
+{
+    public enum Opcao
+    {
+        Pedra,
+        Papel,
+        Tesoura
+    }
+
+    public static void Main()
+    {
+        Console.WriteLine("Jogo de Jokenpo!");
+        Console.WriteLine("Escolha sua jogada (0 - Pedra, 1 - Papel, 2 - Tesoura): ");
+        int escolhaDoJogador = Convert.ToInt32(Console.ReadLine());
+
+        Opcao jogadaDoJogador = (Opcao)escolhaDoJogador;
+
+        Random random = new Random();
+        Opcao jogadaDoComputador = (Opcao)random.Next(0, 3);
+
+        Console.WriteLine("O computador escolheu: " + jogadaDoComputador);
+
+        if (jogadaDoJogador == jogadaDoComputador)
+        {
+            Console.WriteLine("Empate!");
+        }
+        else if ((jogadaDoJogador == Opcao.Pedra && jogadaDoComputador == Opcao.Tesoura) ||
+                 (jogadaDoJogador == Opcao.Papel && jogadaDoComputador == Opcao.Pedra) ||
+                 (jogadaDoJogador == Opcao.Tesoura && jogadaDoComputador == Opcao.Papel))
+        {
+            Console.WriteLine("Você ganhou!");
+        }
+        else
+        {
+            Console.WriteLine("Você perdeu!");
+        }
+    }
+}
