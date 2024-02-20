@@ -1,0 +1,60 @@
+// Classe base para Conta
+public class Conta
+{
+    // Membros da conta comum
+    public string Nome { get; set; }
+    public decimal Saldo { get; set; }
+
+    // Construtor
+    public Conta(string nome, decimal saldo)
+    {
+        Nome = nome;
+        Saldo = saldo;
+    }
+
+    // Métodos comuns para operações de conta
+    public void Depositar(decimal valor)
+    {
+        Saldo += valor;
+    }
+
+    public void Sacar(decimal valor)
+    {
+        if (valor <= Saldo)
+        {
+            Saldo -= valor;
+        }
+        else
+        {
+            Console.WriteLine("Saldo insuficiente.");
+        }
+    }
+}
+
+// Classe para ContaEmpresa que herda de Conta
+public class ContaEmpresa : Conta
+{
+    // Novos membros para conta de empresa
+    public decimal LimiteEmprestimo { get; set; }
+
+    // Construtor que chama o construtor da classe base
+    public ContaEmpresa(string nome, decimal saldo, decimal limiteEmprestimo) 
+        : base(nome, saldo)
+    {
+        LimiteEmprestimo = limiteEmprestimo;
+    }
+
+    // Método para realizar empréstimo
+    public void RealizarEmprestimo(decimal valor)
+    {
+        if (valor <= LimiteEmprestimo)
+        {
+            Saldo += valor;
+            LimiteEmprestimo -= valor;
+        }
+        else
+        {
+            Console.WriteLine("Limite de empréstimo excedido.");
+        }
+    }
+}
