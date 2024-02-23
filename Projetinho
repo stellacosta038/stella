@@ -1,0 +1,87 @@
+using System;
+using System.Collections.Generic;
+
+namespace GerenciadorTarefas
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Lista para armazenar as tarefas
+            List<string> tarefas = new List<string>();
+
+            bool continuar = true;
+
+            while (continuar)
+            {
+                //1opções
+                Console.WriteLine("\n===== Gerenciador de Tarefas =====");
+                Console.WriteLine("1. Adicionar Tarefa");
+                Console.WriteLine("2. Remover Tarefa");
+                Console.WriteLine("3. Visualizar Tarefas");
+                Console.WriteLine("4. Sair");
+                Console.Write("Escolha uma opção: ");
+
+                // Lê a opção do usuário
+                string opcao = Console.ReadLine();
+
+                // Executa a opção escolhida
+                switch (opcao)
+                {
+                    case "1":
+                        Console.Write("Digite a nova tarefa: ");
+                        string novaTarefa = Console.ReadLine();
+                        tarefas.Add(novaTarefa);
+                        Console.WriteLine("Tarefa adicionada com sucesso!");
+                        break;
+                    case "2":
+                        if (tarefas.Count == 0)
+                        {
+                            Console.WriteLine("Não há tarefas para remover.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Tarefas:");
+                            for (int i = 0; i < tarefas.Count; i++)
+                            {
+                                Console.WriteLine($"{i + 1}. {tarefas[i]}");
+                            }
+                            Console.Write("Digite o número da tarefa a ser removida: ");
+                            int indiceTarefa = Convert.ToInt32(Console.ReadLine()) - 1;
+                            if (indiceTarefa >= 0 && indiceTarefa < tarefas.Count)
+                            {
+                                tarefas.RemoveAt(indiceTarefa);
+                                Console.WriteLine("Tarefa removida com sucesso!");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Índice inválido!");
+                            }
+                        }
+                        break;
+                    case "3":
+                        Console.WriteLine("\nTarefas:");
+                        if (tarefas.Count == 0)
+                        {
+                            Console.WriteLine("Nenhuma tarefa cadastrada.");
+                        }
+                        else
+                        {
+                            for (int i = 0; i < tarefas.Count; i++)
+                            {
+                                Console.WriteLine($"{i + 1}. {tarefas[i]}");
+                            }
+                        }
+                        break;
+                    case "4":
+                        continuar = false;
+                        Console.WriteLine("Saindo do programa...");
+                        break;
+                    default:
+                        Console.WriteLine("Opção inválida!");
+                        break;
+                }
+            }
+        }
+    }
+}
